@@ -1,0 +1,1255 @@
+{
+  "summary": {
+    "id": "mtmt_project_id",
+    "title": "mtmt_project_name",
+    "owner": "",
+    "description": "",
+    "compatibility": {}
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Imported from Open Threat Model"
+      }
+    ],
+    "diagrams": [
+      {
+        "diagramType": "OTM",
+        "id": 0,
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "title": "MTMT Diagram Representation",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "label": "Accounting PostgreSQL",
+            "shape": "actor",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Accounting PostgreSQL",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "d95e63ab-204f-4aee-ab24-b7bdfc7e45f3",
+                  "title": "An adversary can gain unauthorized access to Azure Postgres DB instances due to weak network security configuration",
+                  "description": "An adversary can gain unauthorized access to  Accounting PostgreSQL instances due to weak network security configuration",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Restrict access to Azure Postgres DB instances by configuring server-level firewall rules to only permit connections from selected IP addresses where possible with risk reduction 100 %\nRestrict access to Azure Postgres DB instances by configuring server-level firewall rules to only permit connections from selected IP addresses where possible. Refer: <a href=\"https://aka.ms/tmt-th153\">https://aka.ms/tmt-th153</a>"
+                },
+                {
+                  "id": "0c5fc73e-9bbc-4bc5-b123-90c6b80810ab",
+                  "title": "An adversary may read and/or tamper with the data transmitted to Azure Postgres DB due to weak configuration",
+                  "description": "An adversary may read and/or tamper with the data transmitted to Accounting PostgreSQL due to weak configuration",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Enforce communication between clients and Azure Postgres DB to be over SSL/TLS by enabling the Enforce SSL connection feature on the server with risk reduction 100 %\nEnforce communication between clients and Azure Postgres DB to be over SSL/TLS by enabling the Enforce SSL connection feature on the server. Check that the connection strings used to connect to MySQL databases have the right configuration (e.g. ssl = true or sslmode=require or sslmode=true are set). Refer: <a href=\"https://aka.ms/tmt-th154a\">https://aka.ms/tmt-th154a</a> Configure MySQL server to use a verifiable SSL certificate (needed for SSL/TLS communication). Refer: <a href=\"https://aka.ms/tmt-th154b\">https://aka.ms/tmt-th154b</a>"
+                },
+                {
+                  "id": "dd6ac010-92c4-4ef8-9cff-fa0236e0d08b",
+                  "title": "An adversary can gain long term, persistent access to an Azure Postgres DB instance through the compromise of local user account password(s)",
+                  "description": "An adversary can gain long term, persistent access to Accounting PostgreSQL instance through the compromise of local user account password(s)",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: It is recommended to rotate user account passwords (e with risk reduction 100 %\nIt is recommended to rotate user account passwords (e.g. those used in connection strings) regularly, in accordance with your organization's policies. Store secrets in a secret storage solution (e.g. Azure Key Vault)"
+                }
+              ]
+            },
+            "id": "53245f54-0656-4ede-a393-357aeaa2e20f",
+            "position": {
+              "x": 975,
+              "y": 182
+            },
+            "compatibility": {
+              "otmId": "53245f54-0656-4ede-a393-357aeaa2e20f-representation",
+              "parent": {
+                "trustZone": "b61d6911-338d-46a8-9f39-8dcd24abfe91"
+              }
+            }
+          },
+          {
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "label": "Mobile Client",
+            "shape": "actor",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Mobile Client",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "63122ee0-886f-4356-851f-733565d6fce4",
+                  "title": "An adversary may spoof an Azure administrator and gain access to Azure subscription portal",
+                  "description": "An adversary may spoof an Azure administrator and gain access to Azure subscription portal if the administrator's credentials are compromised",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Enable fine-grained access management to Azure Subscription using RBAC with risk reduction 100 %\nEnable fine-grained access management to Azure Subscription using RBAC. Refer: <a href=\"https://aka.ms/tmtauthz#grained-rbac\">https://aka.ms/tmtauthz#grained-rbac</a>  Enable Azure Multi-Factor Authentication for Azure Administrators. Refer: <a href=\"https://aka.ms/tmtauthn#multi-factor-azure-admin\">https://aka.ms/tmtauthn#multi-factor-azure-admin</a>"
+                },
+                {
+                  "id": "c92ecf0d-2bcc-44ce-b054-5e169c45582a",
+                  "title": "An adversary can gain unauthorized access to resources in an Azure subscription",
+                  "description": "An adversary can gain unauthorized access to resources in Azure subscription. The adversary can be either a disgruntled internal user, or someone who has stolen the credentials of an Azure subscription",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Enable fine-grained access management to Azure Subscription using RBAC with risk reduction 100 %\nEnable fine-grained access management to Azure Subscription using RBAC. Refer: <a href=\"https://aka.ms/tmtauthz#grained-rbac\">https://aka.ms/tmtauthz#grained-rbac</a>"
+                }
+              ]
+            },
+            "id": "6183b7fa-eba5-4bf8-a0af-c3e30d144a10",
+            "position": {
+              "x": 433,
+              "y": 240
+            },
+            "compatibility": {
+              "otmId": "6183b7fa-eba5-4bf8-a0af-c3e30d144a10-representation",
+              "parent": {
+                "trustZone": "6376d53e-6461-412b-8e04-7b3fe2b397de"
+              }
+            }
+          },
+          {
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Public API v2"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "shape": "process",
+            "zIndex": 2,
+            "data": {
+              "type": "tm.Process",
+              "name": "Public API v2",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "4b7fe839-d4af-4ea9-a77a-788b2a4b5bcd",
+                  "title": "An adversary may gain unauthorized access to Web API due to poor access control checks",
+                  "description": "An adversary may gain unauthorized access to Web API due to poor access control checks",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Implement proper authorization mechanism in ASP with risk reduction 100 %\nImplement proper authorization mechanism in ASP.NET Web API. Refer: <a href=\"https://aka.ms/tmtauthz#authz-aspnet\">https://aka.ms/tmtauthz#authz-aspnet</a>"
+                },
+                {
+                  "id": "6c7c81ef-99e4-4220-a106-1deb73974de8",
+                  "title": "An adversary can gain access to sensitive information from an API through error messages",
+                  "description": "An adversary can gain access to sensitive data such as the following, through verbose error messages - Server names - Connection strings - Usernames - Passwords - SQL procedures - Details of dynamic SQL failures - Stack trace and lines of code - Variables stored in memory - Drive and folder locations - Application install points - Host configuration settings - Other internal application details",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that proper exception handling is done in ASP with risk reduction 100 %\nEnsure that proper exception handling is done in ASP.NET Web API. Refer: <a href=\"https://aka.ms/tmtxmgmt#exception\">https://aka.ms/tmtxmgmt#exception</a>"
+                },
+                {
+                  "id": "a73a8bc9-10d9-498e-be76-427bfb27952c",
+                  "title": "An adversary can gain access to sensitive data by sniffing traffic to Web API",
+                  "description": "An adversary can gain access to sensitive data by sniffing traffic to Web API",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Force all traffic to Web APIs over HTTPS connection with risk reduction 100 %\nForce all traffic to Web APIs over HTTPS connection. Refer: <a href=\"https://aka.ms/tmtcommsec#webapi-https\">https://aka.ms/tmtcommsec#webapi-https</a>"
+                },
+                {
+                  "id": "e5077118-404f-4887-b878-e4d7e2d065ba",
+                  "title": "An adversary can gain access to sensitive data stored in Web API's config files",
+                  "description": "An adversary can gain access to the config files. and if sensitive data is stored in it, it would be compromised",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Encrypt sections of Web API's configuration files that contain sensitive data with risk reduction 100 %\nEncrypt sections of Web API's configuration files that contain sensitive data. Refer: <a href=\"https://aka.ms/tmtconfigmgmt#config-sensitive\">https://aka.ms/tmtconfigmgmt#config-sensitive</a>"
+                },
+                {
+                  "id": "9f9a8def-bf9c-462a-88eb-43c0a7e5a987",
+                  "title": "Attacker can deny a malicious act on an API leading to repudiation issues",
+                  "description": "Attacker can deny a malicious act on an API leading to repudiation issues",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that auditing and logging is enforced on Web API with risk reduction 100 %\nEnsure that auditing and logging is enforced on Web API. Refer: <a href=\"https://aka.ms/tmtauditlog#logging-web-api\">https://aka.ms/tmtauditlog#logging-web-api</a>"
+                },
+                {
+                  "id": "521b6d05-4e5b-4e03-a126-0a714dcaaf9e",
+                  "title": "An adversary may spoof Accounting PostgreSQL and gain access to Web API",
+                  "description": "If proper authentication is not in place, an adversary can spoof a source process or external entity and gain unauthorized access to the Web Application",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that standard authentication techniques are used to secure Web APIs with risk reduction 100 %\nEnsure that standard authentication techniques are used to secure Web APIs. Refer: <a href=\"https://aka.ms/tmtauthn#authn-secure-api\">https://aka.ms/tmtauthn#authn-secure-api</a>"
+                },
+                {
+                  "id": "ad2b30c0-9983-4957-a131-07229e870e31",
+                  "title": "An adversary may inject malicious inputs into an API and affect downstream processes",
+                  "description": "An adversary may inject malicious inputs into an API and affect downstream processes",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that model validation is done on Web API methods with risk reduction 100 %\nEnsure that model validation is done on Web API methods. Refer: <a href=\"https://aka.ms/tmtinputval#validation-api\">https://aka.ms/tmtinputval#validation-api</a>  Implement input validation on all string type parameters accepted by Web API methods. Refer: <a href=\"https://aka.ms/tmtinputval#string-api\">https://aka.ms/tmtinputval#string-api</a>"
+                },
+                {
+                  "id": "244193a3-a0d5-4f46-8085-23f058ec4921",
+                  "title": "An adversary can gain access to sensitive data by performing SQL injection through Web API",
+                  "description": "SQL injection is an attack in which malicious code is inserted into strings that are later passed to an instance of SQL Server for parsing and execution. The primary form of SQL injection consists of direct insertion of code into user-input variables that are concatenated with SQL commands and executed. A less direct attack injects malicious code into strings that are destined for storage in a table or as metadata. When the stored strings are subsequently concatenated into a dynamic SQL command, the malicious code is executed",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that type-safe parameters are used in Web API for data access with risk reduction 100 %\nEnsure that type-safe parameters are used in Web API for data access. Refer: <a href=\"https://aka.ms/tmtinputval#typesafe-api\">https://aka.ms/tmtinputval#typesafe-api</a>"
+                },
+                {
+                  "id": "38d98e36-3b2d-4635-bc73-9a3d477ad8b2",
+                  "title": "An adversary may inject malicious inputs into an API and affect downstream processes",
+                  "description": "An adversary may inject malicious inputs into an API and affect downstream processes",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that model validation is done on Web API methods with risk reduction 100 %\nEnsure that model validation is done on Web API methods. Refer: <a href=\"https://aka.ms/tmtinputval#validation-api\">https://aka.ms/tmtinputval#validation-api</a>  Implement input validation on all string type parameters accepted by Web API methods. Refer: <a href=\"https://aka.ms/tmtinputval#string-api\">https://aka.ms/tmtinputval#string-api</a>"
+                },
+                {
+                  "id": "60a67b42-75a3-4989-b2b6-926ab812b247",
+                  "title": "An adversary may spoof Azure File Storage and gain access to Web API",
+                  "description": "If proper authentication is not in place, an adversary can spoof a source process or external entity and gain unauthorized access to the Web Application",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that standard authentication techniques are used to secure Web APIs with risk reduction 100 %\nEnsure that standard authentication techniques are used to secure Web APIs. Refer: <a href=\"https://aka.ms/tmtauthn#authn-secure-api\">https://aka.ms/tmtauthn#authn-secure-api</a>"
+                },
+                {
+                  "id": "f073886a-8447-4ccf-aea1-c25725caa0e5",
+                  "title": "Attacker can deny a malicious act on an API leading to repudiation issues",
+                  "description": "Attacker can deny a malicious act on an API leading to repudiation issues",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that auditing and logging is enforced on Web API with risk reduction 100 %\nEnsure that auditing and logging is enforced on Web API. Refer: <a href=\"https://aka.ms/tmtauditlog#logging-web-api\">https://aka.ms/tmtauditlog#logging-web-api</a>"
+                },
+                {
+                  "id": "0dbd5b59-a8be-4041-9e77-0c004eb8f6d0",
+                  "title": "An adversary can gain access to sensitive data stored in Web API's config files",
+                  "description": "An adversary can gain access to the config files. and if sensitive data is stored in it, it would be compromised",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Encrypt sections of Web API's configuration files that contain sensitive data with risk reduction 100 %\nEncrypt sections of Web API's configuration files that contain sensitive data. Refer: <a href=\"https://aka.ms/tmtconfigmgmt#config-sensitive\">https://aka.ms/tmtconfigmgmt#config-sensitive</a>"
+                },
+                {
+                  "id": "a9128620-161d-4f94-9ca7-ab9bea585886",
+                  "title": "An adversary can gain access to sensitive data by sniffing traffic to Web API",
+                  "description": "An adversary can gain access to sensitive data by sniffing traffic to Web API",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Force all traffic to Web APIs over HTTPS connection with risk reduction 100 %\nForce all traffic to Web APIs over HTTPS connection. Refer: <a href=\"https://aka.ms/tmtcommsec#webapi-https\">https://aka.ms/tmtcommsec#webapi-https</a>"
+                },
+                {
+                  "id": "34f630a5-67db-4ce9-afd5-ce7ff4a0f660",
+                  "title": "An adversary can gain access to sensitive information from an API through error messages",
+                  "description": "An adversary can gain access to sensitive data such as the following, through verbose error messages - Server names - Connection strings - Usernames - Passwords - SQL procedures - Details of dynamic SQL failures - Stack trace and lines of code - Variables stored in memory - Drive and folder locations - Application install points - Host configuration settings - Other internal application details",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that proper exception handling is done in ASP with risk reduction 100 %\nEnsure that proper exception handling is done in ASP.NET Web API. Refer: <a href=\"https://aka.ms/tmtxmgmt#exception\">https://aka.ms/tmtxmgmt#exception</a>"
+                },
+                {
+                  "id": "8f8547ba-70ca-47f8-9c49-75062ba3f1f2",
+                  "title": "An adversary may gain unauthorized access to Web API due to poor access control checks",
+                  "description": "An adversary may gain unauthorized access to Web API due to poor access control checks",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Implement proper authorization mechanism in ASP with risk reduction 100 %\nImplement proper authorization mechanism in ASP.NET Web API. Refer: <a href=\"https://aka.ms/tmtauthz#authz-aspnet\">https://aka.ms/tmtauthz#authz-aspnet</a>"
+                },
+                {
+                  "id": "166ee3db-f42b-40b9-b80c-fd8cfa09cd7a",
+                  "title": "An adversary may jail break into a mobile device and gain elevated privileges",
+                  "description": "An adversary may jail break into a mobile device and gain elevated privileges",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Implement implicit jailbreak or rooting detection with risk reduction 100 %\nImplement implicit jailbreak or rooting detection. Refer: <a href=\"https://aka.ms/tmtauthz#rooting-detection\">https://aka.ms/tmtauthz#rooting-detection</a>"
+                },
+                {
+                  "id": "5752be9c-f3c0-4bf5-af1b-0561108112bd",
+                  "title": "An adversary may gain unauthorized access to Web API due to poor access control checks",
+                  "description": "An adversary may gain unauthorized access to Web API due to poor access control checks",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Implement proper authorization mechanism in ASP with risk reduction 100 %\nImplement proper authorization mechanism in ASP.NET Web API. Refer: <a href=\"https://aka.ms/tmtauthz#authz-aspnet\">https://aka.ms/tmtauthz#authz-aspnet</a>"
+                },
+                {
+                  "id": "043d5995-c33f-426f-bf9b-6d19d7b4c876",
+                  "title": "An adversary can gain access to sensitive information from an API through error messages",
+                  "description": "An adversary can gain access to sensitive data such as the following, through verbose error messages - Server names - Connection strings - Usernames - Passwords - SQL procedures - Details of dynamic SQL failures - Stack trace and lines of code - Variables stored in memory - Drive and folder locations - Application install points - Host configuration settings - Other internal application details",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that proper exception handling is done in ASP with risk reduction 100 %\nEnsure that proper exception handling is done in ASP.NET Web API. Refer: <a href=\"https://aka.ms/tmtxmgmt#exception\">https://aka.ms/tmtxmgmt#exception</a>"
+                },
+                {
+                  "id": "b2991334-267e-4d98-ba39-23e0b92660d2",
+                  "title": "An adversary can gain access to sensitive data by sniffing traffic from Mobile client",
+                  "description": "An adversary can gain access to sensitive data by sniffing traffic from Mobile client",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Implement Certificate Pinning with risk reduction 100 %\nImplement Certificate Pinning. Refer: <a href=\"https://aka.ms/tmtcommsec#cert-pinning\">https://aka.ms/tmtcommsec#cert-pinning</a>"
+                },
+                {
+                  "id": "7b16a76f-de45-40c9-9a61-a682ddeb5553",
+                  "title": "An adversary can gain access to sensitive data by sniffing traffic to Web API",
+                  "description": "An adversary can gain access to sensitive data by sniffing traffic to Web API",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Force all traffic to Web APIs over HTTPS connection with risk reduction 100 %\nForce all traffic to Web APIs over HTTPS connection. Refer: <a href=\"https://aka.ms/tmtcommsec#webapi-https\">https://aka.ms/tmtcommsec#webapi-https</a>"
+                },
+                {
+                  "id": "1edf58d5-dd04-4e1d-acf2-95d8d3a37c66",
+                  "title": "An adversary can gain sensitive data from mobile device",
+                  "description": "If application saves sensitive PII or HBI data on phone SD card or local storage, then it ay get stolen",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Encrypt sensitive or PII data written to phones local storage with risk reduction 100 %\nEncrypt sensitive or PII data written to phones local storage. Refer: <a href=\"https://aka.ms/tmtdata#pii-phones\">https://aka.ms/tmtdata#pii-phones</a>"
+                },
+                {
+                  "id": "79547951-f839-4d5c-a7a3-518bdabe83cd",
+                  "title": "An adversary can gain access to sensitive data stored in Web API's config files",
+                  "description": "An adversary can gain access to the config files. and if sensitive data is stored in it, it would be compromised",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Encrypt sections of Web API's configuration files that contain sensitive data with risk reduction 100 %\nEncrypt sections of Web API's configuration files that contain sensitive data. Refer: <a href=\"https://aka.ms/tmtconfigmgmt#config-sensitive\">https://aka.ms/tmtconfigmgmt#config-sensitive</a>"
+                },
+                {
+                  "id": "159007c4-e338-4d2b-945e-daf1a1dd3e30",
+                  "title": "Attacker can deny a malicious act on an API leading to repudiation issues",
+                  "description": "Attacker can deny a malicious act on an API leading to repudiation issues",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that auditing and logging is enforced on Web API with risk reduction 100 %\nEnsure that auditing and logging is enforced on Web API. Refer: <a href=\"https://aka.ms/tmtauditlog#logging-web-api\">https://aka.ms/tmtauditlog#logging-web-api</a>"
+                },
+                {
+                  "id": "c96c45fe-3583-41ba-864f-e309364d92f8",
+                  "title": "An adversary obtains refresh or access tokens from Mobile Client and uses them to obtain access to the Public API v2 API",
+                  "description": "On a public client (e.g. a mobile device), refresh tokens may be stolen and used by an attacker to obtain access to the API. Depending on the client type, there are different ways that tokens may be revealed to an attacker and therefore different ways to protect them, some involving how the software using the tokens requests, stores and refreshes them",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Use ADAL libraries to manage token requests from OAuth2 clients to AAD (or on-premises AD) with risk reduction 100 %\nUse ADAL libraries to manage token requests from OAuth2 clients to AAD (or on-premises AD). Refer: <a href=\"https://aka.ms/tmtauthn#adal-oauth2\">https://aka.ms/tmtauthn#adal-oauth2</a>"
+                },
+                {
+                  "id": "ce810d88-e9b7-4a4c-8977-5788ccfc4f06",
+                  "title": "An adversary may spoof Mobile Client and gain access to Web API",
+                  "description": "If proper authentication is not in place, an adversary can spoof a source process or external entity and gain unauthorized access to the Web Application",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that standard authentication techniques are used to secure Web APIs with risk reduction 100 %\nEnsure that standard authentication techniques are used to secure Web APIs. Refer: <a href=\"https://aka.ms/tmtauthn#authn-secure-api\">https://aka.ms/tmtauthn#authn-secure-api</a>"
+                },
+                {
+                  "id": "98f33ff6-c0b7-4abb-88ae-67a3c59e2371",
+                  "title": "An adversary may inject malicious inputs into an API and affect downstream processes",
+                  "description": "An adversary may inject malicious inputs into an API and affect downstream processes",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that model validation is done on Web API methods with risk reduction 100 %\nEnsure that model validation is done on Web API methods. Refer: <a href=\"https://aka.ms/tmtinputval#validation-api\">https://aka.ms/tmtinputval#validation-api</a>  Implement input validation on all string type parameters accepted by Web API methods. Refer: <a href=\"https://aka.ms/tmtinputval#string-api\">https://aka.ms/tmtinputval#string-api</a>"
+                },
+                {
+                  "id": "7f381b16-1078-4ef9-aab9-ac90c42de254",
+                  "title": "An adversary can reverse engineer and tamper binaries",
+                  "description": "An adversary can use various tools, reverse engineer binaries and abuse them by tampering",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Obfuscate generated binaries before distributing to end users with risk reduction 100 %\nObfuscate generated binaries before distributing to end users. Refer: <a href=\"https://aka.ms/tmtdata#binaries-end\">https://aka.ms/tmtdata#binaries-end</a>"
+                },
+                {
+                  "id": "25374309-25b8-40a5-9cfe-fa9c013a1843",
+                  "title": "An adversary can gain access to sensitive data by performing SQL injection through Web API",
+                  "description": "SQL injection is an attack in which malicious code is inserted into strings that are later passed to an instance of SQL Server for parsing and execution. The primary form of SQL injection consists of direct insertion of code into user-input variables that are concatenated with SQL commands and executed. A less direct attack injects malicious code into strings that are destined for storage in a table or as metadata. When the stored strings are subsequently concatenated into a dynamic SQL command, the malicious code is executed",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that type-safe parameters are used in Web API for data access with risk reduction 100 %\nEnsure that type-safe parameters are used in Web API for data access. Refer: <a href=\"https://aka.ms/tmtinputval#typesafe-api\">https://aka.ms/tmtinputval#typesafe-api</a>"
+                },
+                {
+                  "id": "c6663293-2db6-47c0-b683-97374d638439",
+                  "title": "An adversary may spoof an Azure administrator and gain access to Azure subscription portal",
+                  "description": "An adversary may spoof an Azure administrator and gain access to Azure subscription portal if the administrator's credentials are compromised",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Enable fine-grained access management to Azure Subscription using RBAC with risk reduction 100 %\nEnable fine-grained access management to Azure Subscription using RBAC. Refer: <a href=\"https://aka.ms/tmtauthz#grained-rbac\">https://aka.ms/tmtauthz#grained-rbac</a>  Enable Azure Multi-Factor Authentication for Azure Administrators. Refer: <a href=\"https://aka.ms/tmtauthn#multi-factor-azure-admin\">https://aka.ms/tmtauthn#multi-factor-azure-admin</a>"
+                },
+                {
+                  "id": "358e77c7-e347-418c-a19a-d763bd2dbde7",
+                  "title": "An adversary can gain unauthorized access to resources in an Azure subscription",
+                  "description": "An adversary can gain unauthorized access to resources in Azure subscription. The adversary can be either a disgruntled internal user, or someone who has stolen the credentials of an Azure subscription",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Enable fine-grained access management to Azure Subscription using RBAC with risk reduction 100 %\nEnable fine-grained access management to Azure Subscription using RBAC. Refer: <a href=\"https://aka.ms/tmtauthz#grained-rbac\">https://aka.ms/tmtauthz#grained-rbac</a>"
+                },
+                {
+                  "id": "7f10baec-f1d3-4a92-9c4d-fe0f045354b0",
+                  "title": "An adversary can gain access to sensitive data by performing SQL injection through Web API",
+                  "description": "SQL injection is an attack in which malicious code is inserted into strings that are later passed to an instance of SQL Server for parsing and execution. The primary form of SQL injection consists of direct insertion of code into user-input variables that are concatenated with SQL commands and executed. A less direct attack injects malicious code into strings that are destined for storage in a table or as metadata. When the stored strings are subsequently concatenated into a dynamic SQL command, the malicious code is executed",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that type-safe parameters are used in Web API for data access with risk reduction 100 %\nEnsure that type-safe parameters are used in Web API for data access. Refer: <a href=\"https://aka.ms/tmtinputval#typesafe-api\">https://aka.ms/tmtinputval#typesafe-api</a>"
+                }
+              ]
+            },
+            "id": "5d15323e-3729-4694-87b1-181c90af5045",
+            "position": {
+              "x": 765,
+              "y": 243
+            },
+            "compatibility": {
+              "otmId": "5d15323e-3729-4694-87b1-181c90af5045-representation",
+              "parent": {
+                "trustZone": "b61d6911-338d-46a8-9f39-8dcd24abfe91"
+              }
+            }
+          },
+          {
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "label": "Azure File Storage",
+            "shape": "actor",
+            "zIndex": 3,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Azure File Storage",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "0d445071-a7ff-4bfe-9d22-cacf19f96845",
+                  "title": "An adversary can gain unauthorized access to Azure File Storage due to weak access control restrictions",
+                  "description": "An adversary can gain unauthorized access to Azure File Storage due to weak access control restrictions",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Grant limited access to objects in Azure Storage using SAS or SAP with risk reduction 100 %\nGrant limited access to objects in Azure Storage using SAS or SAP. It is recommended to scope SAS and SAP to permit only the necessary permissions over a short period of time. Refer: <a href=\"https://aka.ms/tmt-th17a\">https://aka.ms/tmt-th17a</a> and <a href=\"https://aka.ms/tmt-th17b\">https://aka.ms/tmt-th17b</a>"
+                },
+                {
+                  "id": "19f298fd-74d7-4cdf-a91b-2369bfa7ab99",
+                  "title": "An adversary can gain unauthorized access to Azure File Storage instances due to weak network configuration",
+                  "description": "An adversary can gain unauthorized access to Azure File Storage instances due to weak network configuration",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: It is recommended to restrict access to Azure Storage instances to selected networks where possible with risk reduction 100 %\nIt is recommended to restrict access to Azure Storage instances to selected networks where possible. <a href=\"https://aka.ms/tmt-th140\">https://aka.ms/tmt-th140</a>"
+                },
+                {
+                  "id": "ae9b3aa3-6267-45c4-86f5-96580f8ae3b6",
+                  "title": "An adversary may gain unauthorized access to Azure File Storage account in a subscription",
+                  "description": "An adversary may gain unauthorized access to Azure File Storage account in a subscription",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Assign the appropriate Role-Based Access Control (RBAC) role to users, groups and applications at the right scope for the Azure Storage instance with risk reduction 100 %\nAssign the appropriate Role-Based Access Control (RBAC) role to users, groups and applications at the right scope for the Azure Storage instance. Refer: <a href=\"https://aka.ms/tmt-th67\">https://aka.ms/tmt-th67</a>"
+                },
+                {
+                  "id": "9e82c431-16d8-4943-8095-9c85d88b1b65",
+                  "title": "An adversary can abuse poorly managed Azure File Storage account access keys",
+                  "description": "An adversary can abuse poorly managed Azure File Storage account access keys and gain unauthorized access to storage",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure secure management and storage of Azure storage access keys with risk reduction 100 %\nEnsure secure management and storage of Azure storage access keys. It is recommended to rotate storage access keys regularly, in accordance with organizational policies. Refer: <a href=\"https://aka.ms/tmt-th63\">https://aka.ms/tmt-th63</a>"
+                },
+                {
+                  "id": "91362a60-8f70-47fd-8282-ab2ef0a8d4ec",
+                  "title": "An adversary can abuse an insecure communication channel between a client and Azure File Storage",
+                  "description": "An adversary can abuse an insecure communication channel between a client and Azure File Storage",
+                  "type": "Information Disclosure",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that communication to Azure Storage is over HTTPS with risk reduction 100 %\nEnsure that communication to Azure Storage is over HTTPS. It is recommended to enable the secure transfer required option to force communication with Azure Storage to be over HTTPS.  Use Client-Side Encryption to store sensitive data in Azure Storage. Refer: <a href=\"https://aka.ms/tmt-th65\">https://aka.ms/tmt-th65</a>"
+                },
+                {
+                  "id": "a3adcae1-fcd9-4460-a8d4-03dde2005b65",
+                  "title": "An adversary can deny actions on Azure File Storage due to lack of auditing",
+                  "description": "Proper logging of all security events and user actions builds traceability in a system and denies any possible repudiation issues. In the absence of proper auditing and logging controls, it would become impossible to implement any accountability in a system",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Use Azure Storage Analytics to audit access of Azure Storage with risk reduction 100 %\nUse Azure Storage Analytics to audit access of Azure Storage. If possible, audit the calls to the Azure Storage instance at the source of the call. Refer: <a href=\"https://aka.ms/tmt-th20\">https://aka.ms/tmt-th20</a>"
+                },
+                {
+                  "id": "21901949-dc27-4e07-9a6c-79bde95e4353",
+                  "title": "An adversary can gain unauthorized access to Azure File Storage due to weak CORS configuration",
+                  "description": "An adversary can gain unauthorized access to Azure File Storage due to weak CORS configuration",
+                  "type": "Elevation of Privileges",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "score": "10",
+                  "severity": "Critical",
+                  "status": "Open",
+                  "mitigation": "Mitigation applied: Ensure that only specific, trusted origins are allowed with risk reduction 100 %\nEnsure that only specific, trusted origins are allowed. Refer: <a href=\"https://aka.ms/tmt-th21\">https://aka.ms/tmt-th21</a>"
+                }
+              ]
+            },
+            "id": "91882aca-8249-49a7-96f0-164b68411b48",
+            "position": {
+              "x": 974,
+              "y": 311
+            },
+            "compatibility": {
+              "otmId": "91882aca-8249-49a7-96f0-164b68411b48-representation",
+              "parent": {
+                "trustZone": "b61d6911-338d-46a8-9f39-8dcd24abfe91"
+              }
+            }
+          },
+          {
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "shape": "flow",
+            "width": 200,
+            "height": 100,
+            "labels": [
+              {
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "attrs": {
+                  "labelText": {
+                    "text": "PSQL Request",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "PSQL Request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "source": {
+              "cell": "5d15323e-3729-4694-87b1-181c90af5045",
+              "port": ""
+            },
+            "target": {
+              "cell": "53245f54-0656-4ede-a393-357aeaa2e20f",
+              "port": ""
+            },
+            "vertices": [],
+            "id": "eb072144-af37-4b75-b46b-b78111850d3e",
+            "compatibility": {},
+            "zIndex": 4
+          },
+          {
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "shape": "flow",
+            "width": 200,
+            "height": 100,
+            "labels": [
+              {
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "attrs": {
+                  "labelText": {
+                    "text": "PSQL Response",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "PSQL Response",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "source": {
+              "cell": "53245f54-0656-4ede-a393-357aeaa2e20f",
+              "port": ""
+            },
+            "target": {
+              "cell": "5d15323e-3729-4694-87b1-181c90af5045",
+              "port": ""
+            },
+            "vertices": [],
+            "id": "36091fd8-dba8-424e-a3cd-784ea6bcb9e0",
+            "compatibility": {},
+            "zIndex": 5
+          },
+          {
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "shape": "flow",
+            "width": 200,
+            "height": 100,
+            "labels": [
+              {
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "attrs": {
+                  "labelText": {
+                    "text": "File Request",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "File Request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "source": {
+              "cell": "5d15323e-3729-4694-87b1-181c90af5045",
+              "port": ""
+            },
+            "target": {
+              "cell": "91882aca-8249-49a7-96f0-164b68411b48",
+              "port": ""
+            },
+            "vertices": [],
+            "id": "f5fe3c6e-e10b-4252-a4aa-4ec6108c96a6",
+            "compatibility": {},
+            "zIndex": 6
+          },
+          {
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "shape": "flow",
+            "width": 200,
+            "height": 100,
+            "labels": [
+              {
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "attrs": {
+                  "labelText": {
+                    "text": "File Response",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "File Response",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "source": {
+              "cell": "91882aca-8249-49a7-96f0-164b68411b48",
+              "port": ""
+            },
+            "target": {
+              "cell": "5d15323e-3729-4694-87b1-181c90af5045",
+              "port": ""
+            },
+            "vertices": [],
+            "id": "d826de3d-1464-4d1f-8105-aa0449a50aec",
+            "compatibility": {},
+            "zIndex": 7
+          },
+          {
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "shape": "flow",
+            "width": 200,
+            "height": 100,
+            "labels": [
+              {
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "attrs": {
+                  "labelText": {
+                    "text": "API Request",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "API Request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "source": {
+              "cell": "6183b7fa-eba5-4bf8-a0af-c3e30d144a10",
+              "port": ""
+            },
+            "target": {
+              "cell": "5d15323e-3729-4694-87b1-181c90af5045",
+              "port": ""
+            },
+            "vertices": [],
+            "id": "9840bcdf-c444-437d-8289-d5468f41b0db",
+            "compatibility": {},
+            "zIndex": 8
+          },
+          {
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "shape": "flow",
+            "width": 200,
+            "height": 100,
+            "labels": [
+              {
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "attrs": {
+                  "labelText": {
+                    "text": "API Response",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "API Response",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "source": {
+              "cell": "5d15323e-3729-4694-87b1-181c90af5045",
+              "port": ""
+            },
+            "target": {
+              "cell": "6183b7fa-eba5-4bf8-a0af-c3e30d144a10",
+              "port": ""
+            },
+            "vertices": [],
+            "id": "5861370d-b333-4d4b-9420-95425026e9c9",
+            "compatibility": {},
+            "zIndex": 9
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": "Internet"
+              }
+            },
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Internet",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "id": "6376d53e-6461-412b-8e04-7b3fe2b397de",
+            "size": {
+              "width": 202,
+              "height": 281
+            },
+            "position": {
+              "x": 386,
+              "y": 151
+            },
+            "compatibility": {
+              "risk": {
+                "trustRating": 10
+              }
+            }
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": "Public Cloud"
+              }
+            },
+            "shape": "trust-boundary-box",
+            "zIndex": -2,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Public Cloud",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "id": "b61d6911-338d-46a8-9f39-8dcd24abfe91",
+            "size": {
+              "width": 371,
+              "height": 308
+            },
+            "position": {
+              "x": 744,
+              "y": 142
+            },
+            "compatibility": {
+              "risk": {
+                "trustRating": 10
+              }
+            }
+          }
+        ],
+        "compatibility": {
+          "otmId": "mtmt_project_id-diagram",
+          "size": {
+            "width": 2000,
+            "height": 2000
+          }
+        }
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 42
+  },
+  "version": "2.6.2",
+  "compatibility": {
+    "otmVersion": "0.1.0",
+    "representations": [
+      {
+        "name": "Microsoft Threat Modeling Tool",
+        "id": "Microsoft Threat Modeling Tool",
+        "type": "threat-model"
+      }
+    ],
+    "components": []
+  }
+}
